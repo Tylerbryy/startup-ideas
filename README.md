@@ -1,5 +1,5 @@
 
-<p align="center"><h1>🚀 Startup Ideas Collection</h1></p>
+<p align="center"><h1>🚀 Startup Ideas</h1></p>
 
 
 
