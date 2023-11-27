@@ -11,11 +11,11 @@ The startup ecosystem is vibrant and continuously evolving. New ideas can lead t
 
 We encourage you to explore these ideas, iterate upon them, and potentially turn them into successful businesses. Feel free to contribute your own ideas to this list by submitting a pull request.
 
-To get started, simply clone this repository and browse through the `ideas.md` file for a compilation of startup concepts across various industries.
+To get started, simply clone this repository and browse through the `ideas.csv` file for a compilation of startup concepts across various industries.
 
 We hope you find inspiration here and embark on an entrepreneurial journey that leads to innovation and success!
 
-**[View on GitHub](https://github.com/yourusername/startup-ideas-collection)**
+**[View on GitHub](https://github.com/Tylerbryy/startup-ideas)**
 
 ---
 
@@ -24,7 +24,7 @@ We hope you find inspiration here and embark on an entrepreneurial journey that 
 Have a groundbreaking idea that could transform into a successful startup? Share it with the world! Here's how you can contribute to this repository:
 
 1. Fork the repository.
-2. Add your startup idea to the `ideas.md` file.
+2. Add your startup idea to the `ideas.csv` file.
 3. Submit a pull request with a brief explanation of your idea.
 
 We welcome ideas from all sectors, including technology, healthcare, education, sustainability, and more. Let's innovate together!
