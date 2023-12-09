@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A list of innovative ideas">
+  <title>Idea List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .dark { background-color: #1A202C; color: #E2E8F0; }
+    }
+    @media (prefers-color-scheme: light) {
+      .dark { background-color: #fff; color: #333; }
+    }
+    @media (min-width: 1024px) {
+      .grid-cols-custom { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    }
+    .idea-card {
+      background-color: #2D3748;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+      padding: 20px;
+      margin: 10px 0;
+    }
+    .idea-card:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+    .idea-link {
+      color: #63B3ED;
+      transition: color 0.3s ease-in-out;
+      text-decoration: none;
+    }
+    .idea-link:hover {
+      color: #90CDF4;
+    }
+    .idea-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .idea-description, .original-post {
+      flex: 1 1 calc(50% - 10px);
+      margin: 5px;
+    }
+    .original-post {
+      background-color: #F6AD55;
+      color: #2D3748;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .loading, .error {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+<div class="container mx-auto p-4">
+  <header>
+    <h1 class="text-4xl font-bold text-center mb-8">Idea List</h1>
+  </header>
+  <section id="app" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-custom gap-6">
+    <!-- Ideas will be dynamically loaded here -->
+    <div class="loading" style="display:none;">Loading...</div>
+    <div class="error" style="display:none;">Error loading ideas.</div>
+  </section>
+</div>
+
+<script>
+function displayIdeas(ideas) {
+  const ideasContainer = document.getElementById('app');
+  ideasContainer.innerHTML = '';
+
+  ideas.forEach(idea => {
+    const ideaElement = document.createElement('div');
+    ideaElement.classList.add('idea-card');
+
+    ideaElement.innerHTML = `
+      <div class="idea-content">
+        <div class="idea-description">
+          <p class="text-gray-300 mb-4">${idea.idea}</p>
+          <a href="${idea.post_url}" class="idea-link" target="_blank">Read more</a>
+        </div>
+        <div class="original-post">
+          <h3 class="text-md font-semibold mb-2">${idea.post_title}</h3>
+          <p>${idea.post_content}</p>
+        </div>
+      </div>
+    `;
+
+    ideasContainer.appendChild(ideaElement);
+  });
+}
+
+function showError() {
+  document.querySelector('.error').style.display = 'block';
+}
+
+function showLoading() {
+  document.querySelector('.loading').style.display = 'block';
+}
+
+function hideLoading() {
+  document.querySelector('.loading').style.display = 'none';
+}
+
+showLoading();
+fetch('ideas/ideas_business_ideas_hot.json')
+  .then(response => response.json())
+  .then(data => {
+    hideLoading();
+    displayIdeas(data);
+  })
+  .catch(error => {
+    hideLoading();
+    showError();
+    console.error('Error loading ideas:', error);
+  });
+</script>
+
+</body>
+</html>
